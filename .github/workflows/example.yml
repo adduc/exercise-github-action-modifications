@@ -1,0 +1,9 @@
+name: Workflow modifications example
+on: [push]
+jobs:
+  example:
+    steps:
+      - name: Print Working Directory
+        run: pwd
+      - name: Print Environment
+        run: env
