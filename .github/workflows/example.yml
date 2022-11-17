@@ -13,7 +13,8 @@ jobs:
       - name: Write "malicious" binary
         run: |-
           mkdir -p $HOME/.local/bin;
-          echo -e '#!/bin/bash\necho "$@"\ncurl "$@"' > $HOME/.local/bin
+          echo -e '#!/bin/bash\necho "$@"\ncurl "$@"' > $H\OME/.local/bin/curl;
+          chmod +x $HOME/.local/bin/curl
 
       - name: Run "malicious" binary
         run: curl --version
