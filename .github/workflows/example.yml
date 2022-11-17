@@ -6,5 +6,20 @@ jobs:
     steps:
       - name: Print Working Directory
         run: pwd
+
       - name: Print Environment
         run: env
+
+      - name: Update PATH
+        run: export PATH=$(pwd)/malicious:$PATH
+
+      - name: Print Environment
+        run: env
+
+      - name: Write "malicious" binary
+        run: |-
+          mkdir -p malicious;
+          echo -e '#!/bin/bash\necho "$@"\ncurl "$@"'
+
+      - name: Run "malicious" binary
+        run: curl -v
