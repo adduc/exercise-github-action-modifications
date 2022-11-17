@@ -10,16 +10,10 @@ jobs:
       - name: Print Environment
         run: env
 
-      - name: Update PATH
-        run: export PATH=$(pwd)/malicious:$PATH
-
-      - name: Print Environment
-        run: env
-
       - name: Write "malicious" binary
         run: |-
-          mkdir -p malicious;
-          echo -e '#!/bin/bash\necho "$@"\ncurl "$@"'
+          mkdir -p $HOME/.local/bin;
+          echo -e '#!/bin/bash\necho "$@"\ncurl "$@"' > $HOME/.local/bin
 
       - name: Run "malicious" binary
-        run: curl -v
+        run: curl --version
